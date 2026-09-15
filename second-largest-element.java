@@ -1,19 +1,20 @@
-import java.util.*;
-public class Main{
-  public static void main(String[] args){
-    int[] nums ={10, 5, 20, 8, 15}; 
-    int max=0;
-    int sec_max=0;
-    for(int i=0;i<nums.length;i++){
-        if(nums[i]>max){
-            max=nums[i];
-        }
-    }
-    for(int j=0;j<nums.length;j++){
-        if(nums[j]>sec_max && nums[j]<max){
-            sec_max=nums[j];
-        }
-    }
-    System.out.print(sec_max);
+class Solution {
+    public int secondLargestElement(int[] nums) {
+        int maxx=Integer.MIN_VALUE;
+        int sec_max=Integer.MIN_VALUE;
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]>maxx){
+                sec_max=maxx;
+                maxx=nums[i];
+            }
+            else if(nums[i]<maxx && nums[i]>sec_max){
+                sec_max=nums[i];
+                
             }
         }
+            if(sec_max==Integer.MIN_VALUE){
+                return -1;
+            }
+        return sec_max;
+    }
+}
